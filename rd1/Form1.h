@@ -1,3 +1,4 @@
+#include "ConnManager.h"
 #pragma once
 
 namespace rd1 {
@@ -8,6 +9,7 @@ namespace rd1 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+
 
 	/// <summary>
 	/// Summary for Form1
@@ -21,6 +23,8 @@ namespace rd1 {
 			//
 			//TODO: Add the constructor code here
 			//
+			ConnManager cm;
+			
 		}
 
 	protected:

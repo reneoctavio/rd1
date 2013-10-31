@@ -22,6 +22,7 @@
     <None Include="app.ico">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\ScpHIV10.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rd1.cpp">
@@ -34,7 +35,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ConnManager.cpp">
-      <Filter>Source Files\Model</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,5 +56,10 @@
     <ResourceCompile Include="app.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resX">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
