@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="ConnManager.cpp" />
+    <ClCompile Include="ControlPanel.cpp" />
     <ClCompile Include="rd1.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -100,7 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnManager.h" />
-    <ClInclude Include="Form1.h">
+    <ClInclude Include="ControlPanel.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
@@ -110,9 +111,8 @@
     <ResourceCompile Include="app.rc" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resX">
-      <DependentUpon>Form1.h</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="ControlPanel.resx">
+      <DependentUpon>ControlPanel.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

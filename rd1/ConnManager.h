@@ -28,6 +28,8 @@ namespace rd1 {
 	public:
 		ConnManager(void);
 		void ConnManager::FreeLib(void);
+
+		// Abstraction of the DLL
 		int ConnManager::OpenPort(void);
 		int ConnManager::ClosePort(void);
 		int ConnManager::Release(int &version, int &revision);
@@ -47,6 +49,15 @@ namespace rd1 {
 
 		int ConnManager::ModemAutoAnswer(int state);
 		int ConnManager::ConfigComChannel(char *configFileName);
+
+		// Added Functionality
+		int ConnManager::ReadDataParamR(unsigned char *DataBuf);
+		int ConnManager::ReadDataParamM(short int *DataBuf);
+		int ConnManager::ReadDataParamD(float *DataBuf);
+
+		int ConnManager::WriteDataParamR(unsigned char *DataBuf);
+		int ConnManager::WriteDataParamM(short int *DataBuf);
+		int ConnManager::WriteDataParamD(float *DataBuf);
 
 	private:
 		HMODULE ConnManager::GetLib(void);

@@ -10,7 +10,7 @@ namespace rd1 {
 
 	bool ConnManager::LoadLib(void)
 	{
-		this->_lib = LoadLibraryA("ScpHIV10");
+		this->_lib = LoadLibraryA("..\\ScpHIV10.dll");
 		if (this->_lib != NULL)
 		{
 			return true;
@@ -23,7 +23,7 @@ namespace rd1 {
 
 	int ConnManager::OpenPort(void)
 	{
-		return ((SCPOpenPortPtr)GetProcAddress(GetLib(), "SCPOpenPort")) ("ScpHi.cfg");
+		return ((SCPOpenPortPtr)GetProcAddress(GetLib(), "SCPOpenPort")) ("..\\ScpHi.cfg");
 	}
 
 	int ConnManager::ClosePort(void)
@@ -96,6 +96,60 @@ namespace rd1 {
 	int ConnManager::ConfigComChannel(char *configFileName)
 	{
 		return ((SCPConfigComChannelPtr)GetProcAddress(GetLib(), "SCPConfigComChannel")) (configFileName);
+	}
+
+	/// <summary>
+	/// Read Data from Parameter R.
+	/// From R11 to R20
+	/// </summary>
+	int ConnManager::ReadDataParamR(unsigned char *DataBuf)
+	{
+		return ReadData(1, 0, 11, 10, DataBuf);
+	}
+
+	/// <summary>
+	/// Read Data from Parameter M.
+	/// From M6 to M10
+	/// </summary>
+	int ConnManager::ReadDataParamM(short int *DataBuf)
+	{
+		return ReadData(1, 1, 6, 5, DataBuf);
+	}
+
+	/// <summary>
+	/// Read Data from Parameter D.
+	/// From D4 to D8
+	/// </summary>
+	int ConnManager::ReadDataParamD(float *DataBuf)
+	{
+		return ReadData(1, 2, 4, 5, DataBuf);
+	}
+
+	/// <summary>
+	/// Write Data of Parameter R.
+	/// From R11 to R20
+	/// </summary>
+	int ConnManager::WriteDataParamR(unsigned char *DataBuf)
+	{
+		return WriteData(1, 0, 11, 10, DataBuf);
+	}
+
+	/// <summary>
+	/// Write Data of Parameter M.
+	/// From M6 to M10
+	/// </summary>
+	int ConnManager::WriteDataParamM(short int *DataBuf)
+	{
+		return WriteData(1, 1, 6, 5, DataBuf);
+	}
+
+	/// <summary>
+	/// Write Data of Parameter D.
+	/// From D4 to D8
+	/// </summary>
+	int ConnManager::WriteDataParamD(float *DataBuf)
+	{
+		return WriteData(1, 2, 4, 5, DataBuf);
 	}
 
 	void ConnManager::FreeLib(void)

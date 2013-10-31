@@ -1,7 +1,7 @@
 // rd1.cpp : main project file.
 
 #include "stdafx.h"
-#include "Form1.h"
+#include "ControlPanel.h"
 
 using namespace rd1;
 
@@ -13,7 +13,7 @@ int main(array<System::String ^> ^args)
 	Application::SetCompatibleTextRenderingDefault(false); 
 
 	// Create the main window and run it
-	Application::Run(gcnew Form1());
+	Application::Run(gcnew ControlPanel());
 
 	return 0;
 }
