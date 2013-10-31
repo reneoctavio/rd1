@@ -23,6 +23,7 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="..\ScpHIV10.dll" />
+    <None Include="..\ScpHi.cfg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rd1.cpp">
