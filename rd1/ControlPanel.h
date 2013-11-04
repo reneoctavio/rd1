@@ -1,5 +1,6 @@
 #include "ConnManager.h"
 #include "Parameters.h"
+#include "Database.h"
 #pragma once
 
 namespace rd1 {
@@ -140,6 +141,14 @@ private: System::Windows::Forms::Label^  labelD8;
 
 private: System::Windows::Forms::TrackBar^  trackBarD4;
 private: System::Windows::Forms::TrackBar^  trackBarD8;
+private: System::Windows::Forms::GroupBox^  groupBoxTime;
+private: System::Windows::Forms::TextBox^  textBoxTime;
+private: System::Windows::Forms::GroupBox^  groupBox1;
+private: System::Windows::Forms::RadioButton^  radioButtonSimplified;
+
+private: System::Windows::Forms::RadioButton^  radioButtonComplete;
+
+private: System::Windows::Forms::Label^  labelSeconds;
 
 
 
@@ -231,6 +240,12 @@ private: System::Windows::Forms::TrackBar^  trackBarD8;
 			this->groupBoxD8 = (gcnew System::Windows::Forms::GroupBox());
 			this->trackBarD8 = (gcnew System::Windows::Forms::TrackBar());
 			this->labelD8 = (gcnew System::Windows::Forms::Label());
+			this->groupBoxTime = (gcnew System::Windows::Forms::GroupBox());
+			this->textBoxTime = (gcnew System::Windows::Forms::TextBox());
+			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->radioButtonSimplified = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonComplete = (gcnew System::Windows::Forms::RadioButton());
+			this->labelSeconds = (gcnew System::Windows::Forms::Label());
 			this->groupBoxR11->SuspendLayout();
 			this->groupBoxR20->SuspendLayout();
 			this->groupBoxR19->SuspendLayout();
@@ -261,6 +276,8 @@ private: System::Windows::Forms::TrackBar^  trackBarD8;
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBarD7))->BeginInit();
 			this->groupBoxD8->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBarD8))->BeginInit();
+			this->groupBoxTime->SuspendLayout();
+			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBoxR11
@@ -898,11 +915,73 @@ private: System::Windows::Forms::TrackBar^  trackBarD8;
 			this->labelD8->TabIndex = 1;
 			this->labelD8->Text = L"0";
 			// 
+			// groupBoxTime
+			// 
+			this->groupBoxTime->Controls->Add(this->labelSeconds);
+			this->groupBoxTime->Controls->Add(this->textBoxTime);
+			this->groupBoxTime->Location = System::Drawing::Point(12, 277);
+			this->groupBoxTime->Name = L"groupBoxTime";
+			this->groupBoxTime->Size = System::Drawing::Size(168, 50);
+			this->groupBoxTime->TabIndex = 13;
+			this->groupBoxTime->TabStop = false;
+			this->groupBoxTime->Text = L"Tempo de Leitura";
+			// 
+			// textBoxTime
+			// 
+			this->textBoxTime->Location = System::Drawing::Point(7, 20);
+			this->textBoxTime->Name = L"textBoxTime";
+			this->textBoxTime->Size = System::Drawing::Size(100, 20);
+			this->textBoxTime->TabIndex = 0;
+			// 
+			// groupBox1
+			// 
+			this->groupBox1->Controls->Add(this->radioButtonSimplified);
+			this->groupBox1->Controls->Add(this->radioButtonComplete);
+			this->groupBox1->Location = System::Drawing::Point(186, 277);
+			this->groupBox1->Name = L"groupBox1";
+			this->groupBox1->Size = System::Drawing::Size(168, 50);
+			this->groupBox1->TabIndex = 14;
+			this->groupBox1->TabStop = false;
+			this->groupBox1->Text = L"Gravação de Dados";
+			// 
+			// radioButtonSimplified
+			// 
+			this->radioButtonSimplified->AutoSize = true;
+			this->radioButtonSimplified->Location = System::Drawing::Point(83, 20);
+			this->radioButtonSimplified->Name = L"radioButtonSimplified";
+			this->radioButtonSimplified->Size = System::Drawing::Size(81, 17);
+			this->radioButtonSimplified->TabIndex = 1;
+			this->radioButtonSimplified->TabStop = true;
+			this->radioButtonSimplified->Text = L"Simplificada";
+			this->radioButtonSimplified->UseVisualStyleBackColor = true;
+			// 
+			// radioButtonComplete
+			// 
+			this->radioButtonComplete->AutoSize = true;
+			this->radioButtonComplete->Location = System::Drawing::Point(7, 20);
+			this->radioButtonComplete->Name = L"radioButtonComplete";
+			this->radioButtonComplete->Size = System::Drawing::Size(69, 17);
+			this->radioButtonComplete->TabIndex = 0;
+			this->radioButtonComplete->TabStop = true;
+			this->radioButtonComplete->Text = L"Completa";
+			this->radioButtonComplete->UseVisualStyleBackColor = true;
+			// 
+			// labelSeconds
+			// 
+			this->labelSeconds->AutoSize = true;
+			this->labelSeconds->Location = System::Drawing::Point(114, 20);
+			this->labelSeconds->Name = L"labelSeconds";
+			this->labelSeconds->Size = System::Drawing::Size(53, 13);
+			this->labelSeconds->TabIndex = 1;
+			this->labelSeconds->Text = L"segundos";
+			// 
 			// ControlPanel
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(889, 358);
+			this->ClientSize = System::Drawing::Size(889, 343);
+			this->Controls->Add(this->groupBox1);
+			this->Controls->Add(this->groupBoxTime);
 			this->Controls->Add(this->groupBoxD8);
 			this->Controls->Add(this->groupBoxD7);
 			this->Controls->Add(this->groupBoxD6);
@@ -977,6 +1056,10 @@ private: System::Windows::Forms::TrackBar^  trackBarD8;
 			this->groupBoxD8->ResumeLayout(false);
 			this->groupBoxD8->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBarD8))->EndInit();
+			this->groupBoxTime->ResumeLayout(false);
+			this->groupBoxTime->PerformLayout();
+			this->groupBox1->ResumeLayout(false);
+			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -988,6 +1071,8 @@ private: System::Windows::Forms::TrackBar^  trackBarD8;
 				 unsigned char *a = pm->GetBufferR();
 				 pm->SetParamRAtPos(20, 255);
 				 unsigned char b = pm->GetParamRAtPos(20);
+
+				 Database ^ db = gcnew Database();
 
 	}
 	private: System::Void ControlPanel_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
