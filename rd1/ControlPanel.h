@@ -17,143 +17,117 @@ namespace rd1 {
 	/// </summary>
 	public ref class ControlPanel : public System::Windows::Forms::Form
 	{
-	public:
-		ControlPanel(void)
-		{
-			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
-			
-		}
+
+#pragma region Controller Variables
+	private: ConnManager ^ cm;
+	private: Parameters ^ pm;
+	private: Database ^ db;
+#pragma endregion
+
+#pragma region View Variables
 	private: System::Windows::Forms::GroupBox^  groupBoxR11;
-	public:
 	private: System::Windows::Forms::RadioButton^  radioButtonR11Off;
 	private: System::Windows::Forms::RadioButton^  radioButtonR11On;
-	private: System::Windows::Forms::GroupBox^  groupBoxR20;
-	private: System::Windows::Forms::RadioButton^  radioButton20Off;
 
+	private: System::Windows::Forms::GroupBox^  groupBoxR20;
+	private: System::Windows::Forms::RadioButton^  radioButtonR20Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR20On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR19;
-	private: System::Windows::Forms::RadioButton^  radioButton19Off;
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR19Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR19On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR18;
-	private: System::Windows::Forms::RadioButton^  radioButton18Off;
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR18Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR18On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR16;
-	private: System::Windows::Forms::RadioButton^  radioButton16Off;
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR16Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR16On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR17;
-	private: System::Windows::Forms::RadioButton^  radioButton17Off;
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR17Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR17On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR15;
-	private: System::Windows::Forms::RadioButton^  radioButton15Off;
+	private: System::Windows::Forms::RadioButton^  radioButtonR15Off;
+	private: System::Windows::Forms::RadioButton^  radioButtonR15On;
 
 
-	private: System::Windows::Forms::RadioButton^  radioButton15On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR14;
-	private: System::Windows::Forms::RadioButton^  radioButton14Off;
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR14Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR14On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR13;
-	private: System::Windows::Forms::RadioButton^  radioButton13Off;
-
-
-
+	private: System::Windows::Forms::RadioButton^  radioButtonR13Off;
 
 	private: System::Windows::Forms::RadioButton^  radioButtonR13On;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxR12;
 	private: System::Windows::Forms::RadioButton^  radioButtonR12Off;
-
-
 	private: System::Windows::Forms::RadioButton^  radioButtonR12On;
+
 	private: System::Windows::Forms::GroupBox^  groupBoxM6;
 	private: System::Windows::Forms::TrackBar^  trackBarM6;
 	private: System::Windows::Forms::Label^  labelM6;
+	
 	private: System::Windows::Forms::GroupBox^  groupBoxM7;
-
 	private: System::Windows::Forms::Label^  labelM7;
 	private: System::Windows::Forms::TrackBar^  trackBarM7;
-
 
 	private: System::Windows::Forms::GroupBox^  groupBoxM8;
 	private: System::Windows::Forms::Label^  labelM8;
 	private: System::Windows::Forms::TrackBar^  trackBarM8;
 
-
-
 	private: System::Windows::Forms::GroupBox^  groupBoxM9;
 	private: System::Windows::Forms::Label^  labelM9;
 	private: System::Windows::Forms::TrackBar^  trackBarM9;
-
-
 
 	private: System::Windows::Forms::GroupBox^  groupBoxM10;
 	private: System::Windows::Forms::Label^  labelM10;
 	private: System::Windows::Forms::TrackBar^  trackBarM10;
 
-
-
 	private: System::Windows::Forms::GroupBox^  groupBoxD4;
 	private: System::Windows::Forms::Label^  labelD4;
-
-
-
+	private: System::Windows::Forms::TrackBar^  trackBarD4;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxD5;
 	private: System::Windows::Forms::Label^  labelD5;
-private: System::Windows::Forms::TrackBar^  trackBarD5;
-
-
+	private: System::Windows::Forms::TrackBar^  trackBarD5;
 
 	private: System::Windows::Forms::GroupBox^  groupBoxD6;
-private: System::Windows::Forms::Label^  labelD6;
-private: System::Windows::Forms::TrackBar^  trackBarD6;
+	private: System::Windows::Forms::Label^  labelD6;
+	private: System::Windows::Forms::TrackBar^  trackBarD6;
 
+	private: System::Windows::Forms::GroupBox^  groupBoxD7;
+	private: System::Windows::Forms::Label^  labelD7;
+	private: System::Windows::Forms::TrackBar^  trackBarD7;
 
+	private: System::Windows::Forms::GroupBox^  groupBoxD8;
+	private: System::Windows::Forms::Label^  labelD8;
+	private: System::Windows::Forms::TrackBar^  trackBarD8;
 
-private: System::Windows::Forms::GroupBox^  groupBoxD7;
-private: System::Windows::Forms::Label^  labelD7;
-private: System::Windows::Forms::TrackBar^  trackBarD7;
+	private: System::Windows::Forms::GroupBox^  groupBoxTime;
+	private: System::Windows::Forms::TextBox^  textBoxTime;
+	private: System::Windows::Forms::Label^  labelSeconds;
 
+	private: System::Windows::Forms::GroupBox^  groupBox1;
+	private: System::Windows::Forms::RadioButton^  radioButtonSimplified;
+	private: System::Windows::Forms::RadioButton^  radioButtonComplete;
+#pragma endregion
 
-
-private: System::Windows::Forms::GroupBox^  groupBoxD8;
-private: System::Windows::Forms::Label^  labelD8;
-
-private: System::Windows::Forms::TrackBar^  trackBarD4;
-private: System::Windows::Forms::TrackBar^  trackBarD8;
-private: System::Windows::Forms::GroupBox^  groupBoxTime;
-private: System::Windows::Forms::TextBox^  textBoxTime;
-private: System::Windows::Forms::GroupBox^  groupBox1;
-private: System::Windows::Forms::RadioButton^  radioButtonSimplified;
-
-private: System::Windows::Forms::RadioButton^  radioButtonComplete;
-
-private: System::Windows::Forms::Label^  labelSeconds;
-
-
-
-
-			 ConnManager ^ cm;
+	public:
+		ControlPanel(void)
+		{
+			InitializeComponent();
+		}
 
 	protected:
 		/// <summary>
@@ -173,6 +147,14 @@ private: System::Windows::Forms::Label^  labelSeconds;
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
+		// Initialize Mutexes
+		static System::Threading::Mutex^ clpMutex = gcnew System::Threading::Mutex;
+		static System::Threading::Mutex^ dbMutex = gcnew System::Threading::Mutex;
+		static System::Threading::Mutex^ bufferMutex = gcnew System::Threading::Mutex;
+		
+		// Timer
+		static System::Timers::Timer^ aTimer = gcnew System::Timers::Timer(1000); // 1seg
+
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -184,28 +166,28 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->radioButtonR11Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR11On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR20 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton20Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR20Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR20On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR19 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton19Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR19Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR19On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR18 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton18Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR18Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR18On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR16 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton16Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR16Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR16On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR17 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton17Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR17Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR17On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR15 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton15Off = (gcnew System::Windows::Forms::RadioButton());
-			this->radioButton15On = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR15Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR15On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR14 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton14Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR14Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR14On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR13 = (gcnew System::Windows::Forms::GroupBox());
-			this->radioButton13Off = (gcnew System::Windows::Forms::RadioButton());
+			this->radioButtonR13Off = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonR13On = (gcnew System::Windows::Forms::RadioButton());
 			this->groupBoxR12 = (gcnew System::Windows::Forms::GroupBox());
 			this->radioButtonR12Off = (gcnew System::Windows::Forms::RadioButton());
@@ -241,11 +223,11 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->trackBarD8 = (gcnew System::Windows::Forms::TrackBar());
 			this->labelD8 = (gcnew System::Windows::Forms::Label());
 			this->groupBoxTime = (gcnew System::Windows::Forms::GroupBox());
+			this->labelSeconds = (gcnew System::Windows::Forms::Label());
 			this->textBoxTime = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->radioButtonSimplified = (gcnew System::Windows::Forms::RadioButton());
 			this->radioButtonComplete = (gcnew System::Windows::Forms::RadioButton());
-			this->labelSeconds = (gcnew System::Windows::Forms::Label());
 			this->groupBoxR11->SuspendLayout();
 			this->groupBoxR20->SuspendLayout();
 			this->groupBoxR19->SuspendLayout();
@@ -315,7 +297,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR20
 			// 
-			this->groupBoxR20->Controls->Add(this->radioButton20Off);
+			this->groupBoxR20->Controls->Add(this->radioButtonR20Off);
 			this->groupBoxR20->Controls->Add(this->radioButtonR20On);
 			this->groupBoxR20->Location = System::Drawing::Point(795, 12);
 			this->groupBoxR20->Name = L"groupBoxR20";
@@ -324,16 +306,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR20->TabStop = false;
 			this->groupBoxR20->Text = L"R20";
 			// 
-			// radioButton20Off
+			// radioButtonR20Off
 			// 
-			this->radioButton20Off->AutoSize = true;
-			this->radioButton20Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton20Off->Name = L"radioButton20Off";
-			this->radioButton20Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton20Off->TabIndex = 1;
-			this->radioButton20Off->TabStop = true;
-			this->radioButton20Off->Text = L"Desligado";
-			this->radioButton20Off->UseVisualStyleBackColor = true;
+			this->radioButtonR20Off->AutoSize = true;
+			this->radioButtonR20Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR20Off->Name = L"radioButtonR20Off";
+			this->radioButtonR20Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR20Off->TabIndex = 1;
+			this->radioButtonR20Off->TabStop = true;
+			this->radioButtonR20Off->Text = L"Desligado";
+			this->radioButtonR20Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR20On
 			// 
@@ -348,7 +330,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR19
 			// 
-			this->groupBoxR19->Controls->Add(this->radioButton19Off);
+			this->groupBoxR19->Controls->Add(this->radioButtonR19Off);
 			this->groupBoxR19->Controls->Add(this->radioButtonR19On);
 			this->groupBoxR19->Location = System::Drawing::Point(708, 12);
 			this->groupBoxR19->Name = L"groupBoxR19";
@@ -357,16 +339,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR19->TabStop = false;
 			this->groupBoxR19->Text = L"R19";
 			// 
-			// radioButton19Off
+			// radioButtonR19Off
 			// 
-			this->radioButton19Off->AutoSize = true;
-			this->radioButton19Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton19Off->Name = L"radioButton19Off";
-			this->radioButton19Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton19Off->TabIndex = 1;
-			this->radioButton19Off->TabStop = true;
-			this->radioButton19Off->Text = L"Desligado";
-			this->radioButton19Off->UseVisualStyleBackColor = true;
+			this->radioButtonR19Off->AutoSize = true;
+			this->radioButtonR19Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR19Off->Name = L"radioButtonR19Off";
+			this->radioButtonR19Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR19Off->TabIndex = 1;
+			this->radioButtonR19Off->TabStop = true;
+			this->radioButtonR19Off->Text = L"Desligado";
+			this->radioButtonR19Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR19On
 			// 
@@ -381,7 +363,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR18
 			// 
-			this->groupBoxR18->Controls->Add(this->radioButton18Off);
+			this->groupBoxR18->Controls->Add(this->radioButtonR18Off);
 			this->groupBoxR18->Controls->Add(this->radioButtonR18On);
 			this->groupBoxR18->Location = System::Drawing::Point(621, 12);
 			this->groupBoxR18->Name = L"groupBoxR18";
@@ -390,16 +372,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR18->TabStop = false;
 			this->groupBoxR18->Text = L"R18";
 			// 
-			// radioButton18Off
+			// radioButtonR18Off
 			// 
-			this->radioButton18Off->AutoSize = true;
-			this->radioButton18Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton18Off->Name = L"radioButton18Off";
-			this->radioButton18Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton18Off->TabIndex = 1;
-			this->radioButton18Off->TabStop = true;
-			this->radioButton18Off->Text = L"Desligado";
-			this->radioButton18Off->UseVisualStyleBackColor = true;
+			this->radioButtonR18Off->AutoSize = true;
+			this->radioButtonR18Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR18Off->Name = L"radioButtonR18Off";
+			this->radioButtonR18Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR18Off->TabIndex = 1;
+			this->radioButtonR18Off->TabStop = true;
+			this->radioButtonR18Off->Text = L"Desligado";
+			this->radioButtonR18Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR18On
 			// 
@@ -414,7 +396,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR16
 			// 
-			this->groupBoxR16->Controls->Add(this->radioButton16Off);
+			this->groupBoxR16->Controls->Add(this->radioButtonR16Off);
 			this->groupBoxR16->Controls->Add(this->radioButtonR16On);
 			this->groupBoxR16->Location = System::Drawing::Point(447, 12);
 			this->groupBoxR16->Name = L"groupBoxR16";
@@ -423,16 +405,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR16->TabStop = false;
 			this->groupBoxR16->Text = L"R16";
 			// 
-			// radioButton16Off
+			// radioButtonR16Off
 			// 
-			this->radioButton16Off->AutoSize = true;
-			this->radioButton16Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton16Off->Name = L"radioButton16Off";
-			this->radioButton16Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton16Off->TabIndex = 1;
-			this->radioButton16Off->TabStop = true;
-			this->radioButton16Off->Text = L"Desligado";
-			this->radioButton16Off->UseVisualStyleBackColor = true;
+			this->radioButtonR16Off->AutoSize = true;
+			this->radioButtonR16Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR16Off->Name = L"radioButtonR16Off";
+			this->radioButtonR16Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR16Off->TabIndex = 1;
+			this->radioButtonR16Off->TabStop = true;
+			this->radioButtonR16Off->Text = L"Desligado";
+			this->radioButtonR16Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR16On
 			// 
@@ -447,7 +429,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR17
 			// 
-			this->groupBoxR17->Controls->Add(this->radioButton17Off);
+			this->groupBoxR17->Controls->Add(this->radioButtonR17Off);
 			this->groupBoxR17->Controls->Add(this->radioButtonR17On);
 			this->groupBoxR17->Location = System::Drawing::Point(534, 12);
 			this->groupBoxR17->Name = L"groupBoxR17";
@@ -456,16 +438,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR17->TabStop = false;
 			this->groupBoxR17->Text = L"R17";
 			// 
-			// radioButton17Off
+			// radioButtonR17Off
 			// 
-			this->radioButton17Off->AutoSize = true;
-			this->radioButton17Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton17Off->Name = L"radioButton17Off";
-			this->radioButton17Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton17Off->TabIndex = 1;
-			this->radioButton17Off->TabStop = true;
-			this->radioButton17Off->Text = L"Desligado";
-			this->radioButton17Off->UseVisualStyleBackColor = true;
+			this->radioButtonR17Off->AutoSize = true;
+			this->radioButtonR17Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR17Off->Name = L"radioButtonR17Off";
+			this->radioButtonR17Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR17Off->TabIndex = 1;
+			this->radioButtonR17Off->TabStop = true;
+			this->radioButtonR17Off->Text = L"Desligado";
+			this->radioButtonR17Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR17On
 			// 
@@ -480,8 +462,8 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR15
 			// 
-			this->groupBoxR15->Controls->Add(this->radioButton15Off);
-			this->groupBoxR15->Controls->Add(this->radioButton15On);
+			this->groupBoxR15->Controls->Add(this->radioButtonR15Off);
+			this->groupBoxR15->Controls->Add(this->radioButtonR15On);
 			this->groupBoxR15->Location = System::Drawing::Point(360, 12);
 			this->groupBoxR15->Name = L"groupBoxR15";
 			this->groupBoxR15->Size = System::Drawing::Size(81, 71);
@@ -489,31 +471,31 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR15->TabStop = false;
 			this->groupBoxR15->Text = L"R15";
 			// 
-			// radioButton15Off
+			// radioButtonR15Off
 			// 
-			this->radioButton15Off->AutoSize = true;
-			this->radioButton15Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton15Off->Name = L"radioButton15Off";
-			this->radioButton15Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton15Off->TabIndex = 1;
-			this->radioButton15Off->TabStop = true;
-			this->radioButton15Off->Text = L"Desligado";
-			this->radioButton15Off->UseVisualStyleBackColor = true;
+			this->radioButtonR15Off->AutoSize = true;
+			this->radioButtonR15Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR15Off->Name = L"radioButtonR15Off";
+			this->radioButtonR15Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR15Off->TabIndex = 1;
+			this->radioButtonR15Off->TabStop = true;
+			this->radioButtonR15Off->Text = L"Desligado";
+			this->radioButtonR15Off->UseVisualStyleBackColor = true;
 			// 
-			// radioButton15On
+			// radioButtonR15On
 			// 
-			this->radioButton15On->AutoSize = true;
-			this->radioButton15On->Location = System::Drawing::Point(7, 20);
-			this->radioButton15On->Name = L"radioButton15On";
-			this->radioButton15On->Size = System::Drawing::Size(57, 17);
-			this->radioButton15On->TabIndex = 0;
-			this->radioButton15On->TabStop = true;
-			this->radioButton15On->Text = L"Ligado";
-			this->radioButton15On->UseVisualStyleBackColor = true;
+			this->radioButtonR15On->AutoSize = true;
+			this->radioButtonR15On->Location = System::Drawing::Point(7, 20);
+			this->radioButtonR15On->Name = L"radioButtonR15On";
+			this->radioButtonR15On->Size = System::Drawing::Size(57, 17);
+			this->radioButtonR15On->TabIndex = 0;
+			this->radioButtonR15On->TabStop = true;
+			this->radioButtonR15On->Text = L"Ligado";
+			this->radioButtonR15On->UseVisualStyleBackColor = true;
 			// 
 			// groupBoxR14
 			// 
-			this->groupBoxR14->Controls->Add(this->radioButton14Off);
+			this->groupBoxR14->Controls->Add(this->radioButtonR14Off);
 			this->groupBoxR14->Controls->Add(this->radioButtonR14On);
 			this->groupBoxR14->Location = System::Drawing::Point(273, 12);
 			this->groupBoxR14->Name = L"groupBoxR14";
@@ -522,16 +504,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR14->TabStop = false;
 			this->groupBoxR14->Text = L"R14";
 			// 
-			// radioButton14Off
+			// radioButtonR14Off
 			// 
-			this->radioButton14Off->AutoSize = true;
-			this->radioButton14Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton14Off->Name = L"radioButton14Off";
-			this->radioButton14Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton14Off->TabIndex = 1;
-			this->radioButton14Off->TabStop = true;
-			this->radioButton14Off->Text = L"Desligado";
-			this->radioButton14Off->UseVisualStyleBackColor = true;
+			this->radioButtonR14Off->AutoSize = true;
+			this->radioButtonR14Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR14Off->Name = L"radioButtonR14Off";
+			this->radioButtonR14Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR14Off->TabIndex = 1;
+			this->radioButtonR14Off->TabStop = true;
+			this->radioButtonR14Off->Text = L"Desligado";
+			this->radioButtonR14Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR14On
 			// 
@@ -546,7 +528,7 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			// 
 			// groupBoxR13
 			// 
-			this->groupBoxR13->Controls->Add(this->radioButton13Off);
+			this->groupBoxR13->Controls->Add(this->radioButtonR13Off);
 			this->groupBoxR13->Controls->Add(this->radioButtonR13On);
 			this->groupBoxR13->Location = System::Drawing::Point(186, 12);
 			this->groupBoxR13->Name = L"groupBoxR13";
@@ -555,16 +537,16 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxR13->TabStop = false;
 			this->groupBoxR13->Text = L"R13";
 			// 
-			// radioButton13Off
+			// radioButtonR13Off
 			// 
-			this->radioButton13Off->AutoSize = true;
-			this->radioButton13Off->Location = System::Drawing::Point(7, 44);
-			this->radioButton13Off->Name = L"radioButton13Off";
-			this->radioButton13Off->Size = System::Drawing::Size(72, 17);
-			this->radioButton13Off->TabIndex = 1;
-			this->radioButton13Off->TabStop = true;
-			this->radioButton13Off->Text = L"Desligado";
-			this->radioButton13Off->UseVisualStyleBackColor = true;
+			this->radioButtonR13Off->AutoSize = true;
+			this->radioButtonR13Off->Location = System::Drawing::Point(7, 44);
+			this->radioButtonR13Off->Name = L"radioButtonR13Off";
+			this->radioButtonR13Off->Size = System::Drawing::Size(72, 17);
+			this->radioButtonR13Off->TabIndex = 1;
+			this->radioButtonR13Off->TabStop = true;
+			this->radioButtonR13Off->Text = L"Desligado";
+			this->radioButtonR13Off->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonR13On
 			// 
@@ -926,6 +908,15 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->groupBoxTime->TabStop = false;
 			this->groupBoxTime->Text = L"Tempo de Leitura";
 			// 
+			// labelSeconds
+			// 
+			this->labelSeconds->AutoSize = true;
+			this->labelSeconds->Location = System::Drawing::Point(114, 20);
+			this->labelSeconds->Name = L"labelSeconds";
+			this->labelSeconds->Size = System::Drawing::Size(53, 13);
+			this->labelSeconds->TabIndex = 1;
+			this->labelSeconds->Text = L"segundos";
+			// 
 			// textBoxTime
 			// 
 			this->textBoxTime->Location = System::Drawing::Point(7, 20);
@@ -965,15 +956,6 @@ private: System::Windows::Forms::Label^  labelSeconds;
 			this->radioButtonComplete->TabStop = true;
 			this->radioButtonComplete->Text = L"Completa";
 			this->radioButtonComplete->UseVisualStyleBackColor = true;
-			// 
-			// labelSeconds
-			// 
-			this->labelSeconds->AutoSize = true;
-			this->labelSeconds->Location = System::Drawing::Point(114, 20);
-			this->labelSeconds->Name = L"labelSeconds";
-			this->labelSeconds->Size = System::Drawing::Size(53, 13);
-			this->labelSeconds->TabIndex = 1;
-			this->labelSeconds->Text = L"segundos";
 			// 
 			// ControlPanel
 			// 
@@ -1065,16 +1047,147 @@ private: System::Windows::Forms::Label^  labelSeconds;
 		}
 #pragma endregion
 	private: System::Void ControlPanel_Load(System::Object^  sender, System::EventArgs^  e) {
+				 // Open Connection to CLP
 				 cm = gcnew ConnManager();
 				 cm->OpenPort();
-				 Parameters ^ pm = gcnew Parameters();
-				 unsigned char *a = pm->GetBufferR();
-				 pm->SetParamRAtPos(20, 255);
-				 unsigned char b = pm->GetParamRAtPos(20);
 
-				 Database ^ db = gcnew Database();
+				 // Allocate Buffers
+				 pm = gcnew Parameters();
+				 // Zero buffers
+				 pm->ResetBuffers();
 
+				 // Connection to the database
+				 db = gcnew Database();
+				 //Testing of Database
+				 //db->InsertEntry(pm->GetBufferR(), pm->GetBufferM(), pm->GetBufferD());
+				 
+				 // Hook up the Elapsed event for the timer.
+				 aTimer->Elapsed += gcnew System::Timers::ElapsedEventHandler(OnTimedEvent);
+				 aTimer->Enabled = true;
 	}
+
+#pragma region Controller Functions
+	private: void ReadDataFromCLP(void)
+	{
+				 // Read Data from CLP and save in the buffer
+				 bufferMutex->WaitOne();
+				 clpMutex->WaitOne();
+
+				 cm->ReadDataParamR(pm->GetBufferR());
+				 cm->ReadDataParamM(pm->GetBufferM());
+				 cm->ReadDataParamD(pm->GetBufferD());
+
+				 // Release mutexes
+				 clpMutex->ReleaseMutex();
+				 bufferMutex->ReleaseMutex();
+	}
+
+	private: void SaveDataToCLP(void)
+	{
+				 // Read Data from Buffer and save in the CLP
+				 bufferMutex->WaitOne();
+				 clpMutex->WaitOne();
+
+				 cm->WriteDataParamR(pm->GetBufferR());
+				 cm->WriteDataParamM(pm->GetBufferM());
+				 cm->WriteDataParamD(pm->GetBufferD());
+
+				 // Release mutexes
+				 clpMutex->ReleaseMutex();
+				 bufferMutex->ReleaseMutex();
+	}
+
+	private: void UpdateView(void)
+	{
+				 bufferMutex->WaitOne();
+
+				 // Update the View
+				 // Update R
+				 if (pm->GetBufferR()[0] == 0) radioButtonR11Off->Select();
+				 else radioButtonR11On->Select();
+
+				 if (pm->GetBufferR()[1] == 0) radioButtonR12Off->Select();
+				 else radioButtonR12On->Select();
+
+				 if (pm->GetBufferR()[2] == 0) radioButtonR13Off->Select();
+				 else radioButtonR13On->Select();
+
+				 if (pm->GetBufferR()[3] == 0) radioButtonR14Off->Select();
+				 else radioButtonR14On->Select();
+
+				 if (pm->GetBufferR()[4] == 0) radioButtonR15Off->Select();
+				 else radioButtonR15On->Select();
+
+				 if (pm->GetBufferR()[5] == 0) radioButtonR16Off->Select();
+				 else radioButtonR16On->Select();
+
+				 if (pm->GetBufferR()[6] == 0) radioButtonR17Off->Select();
+				 else radioButtonR17On->Select();
+
+				 if (pm->GetBufferR()[7] == 0) radioButtonR18Off->Select();
+				 else radioButtonR18On->Select();
+
+				 if (pm->GetBufferR()[8] == 0) radioButtonR19Off->Select();
+				 else radioButtonR19On->Select();
+
+				 if (pm->GetBufferR()[9] == 0) radioButtonR20Off->Select();
+				 else radioButtonR20On->Select();
+
+				 // Update M
+				 trackBarM6->Value = pm->GetBufferM()[0];
+				 labelM6->Text = pm->GetBufferM()[0].ToString();
+
+				 trackBarM7->Value = pm->GetBufferM()[1];
+				 labelM7->Text = pm->GetBufferM()[1].ToString();
+
+				 trackBarM8->Value = pm->GetBufferM()[2];
+				 labelM8->Text = pm->GetBufferM()[2].ToString();
+
+				 trackBarM9->Value = pm->GetBufferM()[3];
+				 labelM9->Text = pm->GetBufferM()[3].ToString();
+
+				 trackBarM10->Value = pm->GetBufferM()[4];
+				 labelM10->Text = pm->GetBufferM()[4].ToString();
+
+				 // Update D
+				 trackBarD4->Value = pm->GetBufferD()[0];
+				 labelD4->Text = pm->GetBufferD()[0].ToString();
+
+				 trackBarD5->Value = pm->GetBufferD()[1];
+				 labelD5->Text = pm->GetBufferD()[1].ToString();
+
+				 trackBarD6->Value = pm->GetBufferD()[2];
+				 labelD6->Text = pm->GetBufferD()[2].ToString();
+
+				 trackBarD7->Value = pm->GetBufferD()[3];
+				 labelD7->Text = pm->GetBufferD()[3].ToString();
+
+				 trackBarD8->Value = pm->GetBufferD()[4];
+				 labelD8->Text = pm->GetBufferD()[4].ToString();
+
+				 bufferMutex->ReleaseMutex();
+	}
+
+	private: void SaveParametersToDatabase(void)
+	{
+				 // Save data in the database
+				 dbMutex->WaitOne();
+				 bufferMutex->WaitOne();
+
+				 db->InsertEntry(pm->GetBufferR(), pm->GetBufferM(), pm->GetBufferD());
+
+				 bufferMutex->ReleaseMutex();
+				 dbMutex->ReleaseMutex();
+	}
+
+	private: static void OnTimedEvent(Object^ source, System::Timers::ElapsedEventArgs^ e)
+	{
+				 ((ControlPanel^)source)->ReadDataFromCLP();
+				 ((ControlPanel^)source)->SaveParametersToDatabase();
+	}
+
+#pragma endregion
+
 	private: System::Void ControlPanel_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
 				 cm->ClosePort();
 				 cm->FreeLib();

@@ -1,6 +1,5 @@
 #pragma once
 namespace rd1{
-
 	const static int PARAM_R_NUM_VAL = 10;
 	const static int PARAM_M_NUM_VAL = 5;
 	const static int PARAM_D_NUM_VAL = 5;
@@ -14,6 +13,7 @@ namespace rd1{
 	public:
 		Parameters();
 		~Parameters();
+
 
 		// Get Buffers
 		unsigned char * Parameters::GetBufferR(void);
@@ -34,6 +34,9 @@ namespace rd1{
 		unsigned char Parameters::GetParamRAtPos(int pos);
 		short int Parameters::GetParamMAtPos(int pos);
 		float Parameters::GetParamDAtPos(int pos);
+
+		// Reset all buffers
+		void Parameters::ResetBuffers(void);
 
 	private:
 		unsigned char *bufferR;
