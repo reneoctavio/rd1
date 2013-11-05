@@ -21,6 +21,27 @@ namespace rd1{
 		this->bufferD = new float[PARAM_D_NUM_VAL];
 	}
 
+	void Parameters::ResetBuffers(void)
+	{
+		// Zero buffer R
+		for (int i = 0; i < PARAM_R_NUM_VAL; i++)
+		{
+			bufferR[i] = 0;
+		}
+
+		// Zero buffer M
+		for (int i = 0; i < PARAM_M_NUM_VAL; i++)
+		{
+			bufferM[i] = 0;
+		}
+
+		// Zero buffer D
+		for (int i = 0; i < PARAM_D_NUM_VAL; i++)
+		{
+			bufferD[i] = 0.0;
+		}
+	}
+
 	unsigned char * Parameters::GetBufferR(void)
 	{
 		return this->bufferR;
