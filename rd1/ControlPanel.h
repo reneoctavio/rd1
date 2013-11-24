@@ -1,6 +1,7 @@
 #include "ConnManager.h"
 #include "Parameters.h"
 #include "Database.h"
+#include <string>
 #pragma once
 
 namespace rd1 {
@@ -77,7 +78,7 @@ namespace rd1 {
 	private: System::Windows::Forms::GroupBox^  groupBoxM6;
 	private: System::Windows::Forms::TrackBar^  trackBarM6;
 	private: System::Windows::Forms::Label^  labelM6;
-	
+
 	private: System::Windows::Forms::GroupBox^  groupBoxM7;
 	private: System::Windows::Forms::Label^  labelM7;
 	private: System::Windows::Forms::TrackBar^  trackBarM7;
@@ -151,8 +152,9 @@ namespace rd1 {
 		static System::Threading::Mutex^ clpMutex = gcnew System::Threading::Mutex;
 		static System::Threading::Mutex^ dbMutex = gcnew System::Threading::Mutex;
 		static System::Threading::Mutex^ bufferMutex = gcnew System::Threading::Mutex;
-		
+
 		// Timer
+		int cycleTime;
 		static System::Timers::Timer^ aTimer = gcnew System::Timers::Timer(1000); // 1seg
 
 #pragma region Windows Form Designer generated code
@@ -294,6 +296,7 @@ namespace rd1 {
 			this->radioButtonR11On->TabStop = true;
 			this->radioButtonR11On->Text = L"Ligado";
 			this->radioButtonR11On->UseVisualStyleBackColor = true;
+			this->radioButtonR11On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR11On_CheckedChanged);
 			// 
 			// groupBoxR20
 			// 
@@ -327,6 +330,7 @@ namespace rd1 {
 			this->radioButtonR20On->TabStop = true;
 			this->radioButtonR20On->Text = L"Ligado";
 			this->radioButtonR20On->UseVisualStyleBackColor = true;
+			this->radioButtonR20On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR20On_CheckedChanged);
 			// 
 			// groupBoxR19
 			// 
@@ -360,6 +364,7 @@ namespace rd1 {
 			this->radioButtonR19On->TabStop = true;
 			this->radioButtonR19On->Text = L"Ligado";
 			this->radioButtonR19On->UseVisualStyleBackColor = true;
+			this->radioButtonR19On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR19On_CheckedChanged);
 			// 
 			// groupBoxR18
 			// 
@@ -393,6 +398,7 @@ namespace rd1 {
 			this->radioButtonR18On->TabStop = true;
 			this->radioButtonR18On->Text = L"Ligado";
 			this->radioButtonR18On->UseVisualStyleBackColor = true;
+			this->radioButtonR18On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR18On_CheckedChanged);
 			// 
 			// groupBoxR16
 			// 
@@ -426,6 +432,7 @@ namespace rd1 {
 			this->radioButtonR16On->TabStop = true;
 			this->radioButtonR16On->Text = L"Ligado";
 			this->radioButtonR16On->UseVisualStyleBackColor = true;
+			this->radioButtonR16On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR16On_CheckedChanged);
 			// 
 			// groupBoxR17
 			// 
@@ -459,6 +466,7 @@ namespace rd1 {
 			this->radioButtonR17On->TabStop = true;
 			this->radioButtonR17On->Text = L"Ligado";
 			this->radioButtonR17On->UseVisualStyleBackColor = true;
+			this->radioButtonR17On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR17On_CheckedChanged);
 			// 
 			// groupBoxR15
 			// 
@@ -492,6 +500,7 @@ namespace rd1 {
 			this->radioButtonR15On->TabStop = true;
 			this->radioButtonR15On->Text = L"Ligado";
 			this->radioButtonR15On->UseVisualStyleBackColor = true;
+			this->radioButtonR15On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR15On_CheckedChanged);
 			// 
 			// groupBoxR14
 			// 
@@ -525,6 +534,7 @@ namespace rd1 {
 			this->radioButtonR14On->TabStop = true;
 			this->radioButtonR14On->Text = L"Ligado";
 			this->radioButtonR14On->UseVisualStyleBackColor = true;
+			this->radioButtonR14On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR14On_CheckedChanged);
 			// 
 			// groupBoxR13
 			// 
@@ -558,6 +568,7 @@ namespace rd1 {
 			this->radioButtonR13On->TabStop = true;
 			this->radioButtonR13On->Text = L"Ligado";
 			this->radioButtonR13On->UseVisualStyleBackColor = true;
+			this->radioButtonR13On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR13On_CheckedChanged);
 			// 
 			// groupBoxR12
 			// 
@@ -591,6 +602,7 @@ namespace rd1 {
 			this->radioButtonR12On->TabStop = true;
 			this->radioButtonR12On->Text = L"Ligado";
 			this->radioButtonR12On->UseVisualStyleBackColor = true;
+			this->radioButtonR12On->CheckedChanged += gcnew System::EventHandler(this, &ControlPanel::radioButtonR12On_CheckedChanged);
 			// 
 			// groupBoxM6
 			// 
@@ -923,6 +935,8 @@ namespace rd1 {
 			this->textBoxTime->Name = L"textBoxTime";
 			this->textBoxTime->Size = System::Drawing::Size(100, 20);
 			this->textBoxTime->TabIndex = 0;
+			this->textBoxTime->Click += gcnew System::EventHandler(this, &ControlPanel::textBoxTime_Click);
+			this->textBoxTime->TextChanged += gcnew System::EventHandler(this, &ControlPanel::textBoxTime_TextChanged);
 			// 
 			// groupBox1
 			// 
@@ -942,13 +956,13 @@ namespace rd1 {
 			this->radioButtonSimplified->Name = L"radioButtonSimplified";
 			this->radioButtonSimplified->Size = System::Drawing::Size(81, 17);
 			this->radioButtonSimplified->TabIndex = 1;
-			this->radioButtonSimplified->TabStop = true;
 			this->radioButtonSimplified->Text = L"Simplificada";
 			this->radioButtonSimplified->UseVisualStyleBackColor = true;
 			// 
 			// radioButtonComplete
 			// 
 			this->radioButtonComplete->AutoSize = true;
+			this->radioButtonComplete->Checked = true;
 			this->radioButtonComplete->Location = System::Drawing::Point(7, 20);
 			this->radioButtonComplete->Name = L"radioButtonComplete";
 			this->radioButtonComplete->Size = System::Drawing::Size(69, 17);
@@ -1055,15 +1069,24 @@ namespace rd1 {
 				 pm = gcnew Parameters();
 				 // Zero buffers
 				 pm->ResetBuffers();
+				 // Update View based on new parameters
+				 UpdateView();
 
 				 // Connection to the database
 				 db = gcnew Database();
-				 //Testing of Database
-				 //db->InsertEntry(pm->GetBufferR(), pm->GetBufferM(), pm->GetBufferD());
-				 
+
 				 // Hook up the Elapsed event for the timer.
+				 cycleTime = 1000; // 1seg
+				 textBoxTime->Text = Convert::ToString(cycleTime / 1000);
+				 aTimer->SynchronizingObject = this;
 				 aTimer->Elapsed += gcnew System::Timers::ElapsedEventHandler(OnTimedEvent);
 				 aTimer->Enabled = true;
+				 GC::KeepAlive(aTimer);
+	}
+
+	private: System::Void ControlPanel_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
+				 cm->ClosePort();
+				 cm->FreeLib();
 	}
 
 #pragma region Controller Functions
@@ -1103,31 +1126,31 @@ namespace rd1 {
 
 				 // Update the View
 				 // Update R
-				 if (pm->GetBufferR()[0] == 0) radioButtonR11Off->Select();
-				 else radioButtonR11On->Select();
+				 if (pm->GetBufferR()[0] == 0) radioButtonR11Off->Checked = true;
+				 else radioButtonR11On->Checked = true;
 
-				 if (pm->GetBufferR()[1] == 0) radioButtonR12Off->Select();
-				 else radioButtonR12On->Select();
+				 if (pm->GetBufferR()[1] == 0) radioButtonR12Off->Checked = true;
+				 else radioButtonR12On->Checked = true;
 
-				 if (pm->GetBufferR()[2] == 0) radioButtonR13Off->Select();
-				 else radioButtonR13On->Select();
+				 if (pm->GetBufferR()[2] == 0) radioButtonR13Off->Checked = true;
+				 else radioButtonR13On->Checked = true;
 
-				 if (pm->GetBufferR()[3] == 0) radioButtonR14Off->Select();
-				 else radioButtonR14On->Select();
+				 if (pm->GetBufferR()[3] == 0) radioButtonR14Off->Checked = true;
+				 else radioButtonR14On->Checked = true;
 
-				 if (pm->GetBufferR()[4] == 0) radioButtonR15Off->Select();
-				 else radioButtonR15On->Select();
+				 if (pm->GetBufferR()[4] == 0) radioButtonR15Off->Checked = true;
+				 else radioButtonR15On->Checked = true;
 
-				 if (pm->GetBufferR()[5] == 0) radioButtonR16Off->Select();
-				 else radioButtonR16On->Select();
+				 if (pm->GetBufferR()[5] == 0) radioButtonR16Off->Checked = true;
+				 else radioButtonR16On->Checked = true;
 
-				 if (pm->GetBufferR()[6] == 0) radioButtonR17Off->Select();
-				 else radioButtonR17On->Select();
+				 if (pm->GetBufferR()[6] == 0) radioButtonR17Off->Checked = true;
+				 else radioButtonR17On->Checked = true;
 
-				 if (pm->GetBufferR()[7] == 0) radioButtonR18Off->Select();
-				 else radioButtonR18On->Select();
+				 if (pm->GetBufferR()[7] == 0) radioButtonR18Off->Checked = true;
+				 else radioButtonR18On->Checked = true;
 
-				 if (pm->GetBufferR()[8] == 0) radioButtonR19Off->Select();
+				 if (pm->GetBufferR()[8] == 0) radioButtonR19Off->Checked = true;
 				 else radioButtonR19On->Select();
 
 				 if (pm->GetBufferR()[9] == 0) radioButtonR20Off->Select();
@@ -1150,19 +1173,19 @@ namespace rd1 {
 				 labelM10->Text = pm->GetBufferM()[4].ToString();
 
 				 // Update D
-				 trackBarD4->Value = pm->GetBufferD()[0];
+				 trackBarD4->Value = pm->GetBufferD()[0] / 1E35;
 				 labelD4->Text = pm->GetBufferD()[0].ToString();
 
-				 trackBarD5->Value = pm->GetBufferD()[1];
+				 trackBarD5->Value = pm->GetBufferD()[1] / 1E35;
 				 labelD5->Text = pm->GetBufferD()[1].ToString();
 
-				 trackBarD6->Value = pm->GetBufferD()[2];
+				 trackBarD6->Value = pm->GetBufferD()[2] / 1E35;
 				 labelD6->Text = pm->GetBufferD()[2].ToString();
 
-				 trackBarD7->Value = pm->GetBufferD()[3];
+				 trackBarD7->Value = pm->GetBufferD()[3] / 1E35;
 				 labelD7->Text = pm->GetBufferD()[3].ToString();
 
-				 trackBarD8->Value = pm->GetBufferD()[4];
+				 trackBarD8->Value = pm->GetBufferD()[4] / 1E35;
 				 labelD8->Text = pm->GetBufferD()[4].ToString();
 
 				 bufferMutex->ReleaseMutex();
@@ -1182,51 +1205,386 @@ namespace rd1 {
 
 	private: static void OnTimedEvent(Object^ source, System::Timers::ElapsedEventArgs^ e)
 	{
-				 ((ControlPanel^)source)->ReadDataFromCLP();
-				 ((ControlPanel^)source)->SaveParametersToDatabase();
+				 System::Timers::Timer^ timer = (System::Timers::Timer^)source;
+				 ControlPanel^ cp = (ControlPanel^)(timer->SynchronizingObject);
+
+				 // Thread for Reading CLP Data --- DEACTIVED FOR DEBUG
+				 //System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(cp, &ReadDataFromCLP));
+				 //newThread->Start();
+
+				 // Update the View
+				 cp->UpdateView();
+
+				 // Thread for Saving the parameters if the complete is actived
+				 if (cp->radioButtonComplete->Checked)
+				 {
+					 System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(cp, &SaveParametersToDatabase));
+					 newThread->Start();
+				 }
 	}
 
 #pragma endregion
 
-	private: System::Void ControlPanel_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
-				 cm->ClosePort();
-				 cm->FreeLib();
+#pragma region Get R Parameter from View 
+
+	private: System::Void radioButtonR11On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR11On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[0] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[0] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
 	}
+	private: System::Void radioButtonR12On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR12On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[1] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[1] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR13On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR13On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[2] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[2] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR14On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR14On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[3] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[3] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR15On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR15On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[4] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[4] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR16On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR16On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[5] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[5] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR17On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR17On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[6] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[6] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR18On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR18On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[7] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[7] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR19On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR19On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[8] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[8] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+	private: System::Void radioButtonR20On_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (radioButtonR20On->Checked)
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[9] = 255;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+				 else
+				 {
+					 bufferMutex->WaitOne();
+					 pm->GetBufferR()[9] = 0;
+					 bufferMutex->ReleaseMutex();
+					 UpdateView();
+					 //SaveDataToCLP();
+					 // Save on database
+					 SaveParametersToDatabase();
+				 }
+	}
+#pragma endregion
+
+#pragma region Get M Parameter from View
 
 	private: System::Void trackBarM6_Scroll(System::Object^  sender, System::EventArgs^  e) {
+				 // Update Value
 				 labelM6->Text = trackBarM6->Value.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferM()[0] = trackBarM6->Value;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
 	private: System::Void trackBarM7_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 labelM7->Text = trackBarM7->Value.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferM()[1] = trackBarM7->Value;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
 	private: System::Void trackBarM8_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 labelM8->Text = trackBarM8->Value.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferM()[2] = trackBarM8->Value;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
 	private: System::Void trackBarM9_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 labelM9->Text = trackBarM9->Value.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferM()[3] = trackBarM9->Value;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
 	private: System::Void trackBarM10_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 labelM10->Text = trackBarM10->Value.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferM()[4] = trackBarM10->Value;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
+
+#pragma endregion
+
+#pragma region Get D Parameter from View
+
 	private: System::Void trackBarD4_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 float f = ((float)trackBarD4->Value) * 1E35;
 				 labelD4->Text = f.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferD()[0] = f;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
+
 	private: System::Void trackBarD5_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 float f = ((float)trackBarD5->Value) * 1E35;
 				 labelD5->Text = f.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferD()[1] = f;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
+
 	private: System::Void trackBarD6_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 float f = ((float)trackBarD6->Value) * 1E35;
 				 labelD6->Text = f.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferD()[2] = f;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
+
 	private: System::Void trackBarD7_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 float f = ((float)trackBarD7->Value) * 1E35;
 				 labelD7->Text = f.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferD()[3] = f;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
+
 	private: System::Void trackBarD8_Scroll(System::Object^  sender, System::EventArgs^  e) {
 				 float f = ((float)trackBarD8->Value) * 1E35;
 				 labelD8->Text = f.ToString();
+				 // Save on buffer
+				 bufferMutex->WaitOne();
+				 pm->GetBufferD()[4] = f;
+				 bufferMutex->ReleaseMutex();
+				 //SaveDataToCLP();
+				 // Save on database
+				 SaveParametersToDatabase();
 	}
-};
+
+#pragma endregion
+
+#pragma region Cycle Time
+	private: System::Void textBoxTime_Click(System::Object^  sender, System::EventArgs^  e) {
+				 aTimer->Stop();
+				 cycleTime = 0;
+	}
+
+	private: System::Void textBoxTime_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+				 Int32::TryParse(textBoxTime->Text, cycleTime);
+				 if (cycleTime >= 1){
+					 cycleTime = cycleTime * 1000;
+					 aTimer->Interval = cycleTime;
+					 aTimer->Start();
+				 }
+	}
+
+#pragma endregion
+
+	};
 }
