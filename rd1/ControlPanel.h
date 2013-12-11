@@ -1208,9 +1208,9 @@ namespace rd1 {
 				 System::Timers::Timer^ timer = (System::Timers::Timer^)source;
 				 ControlPanel^ cp = (ControlPanel^)(timer->SynchronizingObject);
 
-				 // Thread for Reading CLP Data --- DEACTIVED FOR DEBUG
-				 //System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(cp, &ReadDataFromCLP));
-				 //newThread->Start();
+				 // Thread for Reading CLP Data --- DEACTIVE FOR DEBUG
+				 System::Threading::Thread^ newThread = gcnew System::Threading::Thread(gcnew System::Threading::ThreadStart(cp, &ReadDataFromCLP));
+				 newThread->Start();
 
 				 // Update the View
 				 cp->UpdateView();
@@ -1234,7 +1234,7 @@ namespace rd1 {
 					 pm->GetBufferR()[0] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1244,7 +1244,7 @@ namespace rd1 {
 					 pm->GetBufferR()[0] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1256,7 +1256,7 @@ namespace rd1 {
 					 pm->GetBufferR()[1] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1266,7 +1266,7 @@ namespace rd1 {
 					 pm->GetBufferR()[1] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1278,7 +1278,7 @@ namespace rd1 {
 					 pm->GetBufferR()[2] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1288,7 +1288,7 @@ namespace rd1 {
 					 pm->GetBufferR()[2] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1300,7 +1300,7 @@ namespace rd1 {
 					 pm->GetBufferR()[3] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1310,7 +1310,7 @@ namespace rd1 {
 					 pm->GetBufferR()[3] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1322,7 +1322,7 @@ namespace rd1 {
 					 pm->GetBufferR()[4] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1332,7 +1332,7 @@ namespace rd1 {
 					 pm->GetBufferR()[4] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1344,7 +1344,7 @@ namespace rd1 {
 					 pm->GetBufferR()[5] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1354,7 +1354,7 @@ namespace rd1 {
 					 pm->GetBufferR()[5] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1366,7 +1366,7 @@ namespace rd1 {
 					 pm->GetBufferR()[6] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1376,7 +1376,7 @@ namespace rd1 {
 					 pm->GetBufferR()[6] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1388,7 +1388,7 @@ namespace rd1 {
 					 pm->GetBufferR()[7] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1398,7 +1398,7 @@ namespace rd1 {
 					 pm->GetBufferR()[7] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1410,7 +1410,7 @@ namespace rd1 {
 					 pm->GetBufferR()[8] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1420,7 +1420,7 @@ namespace rd1 {
 					 pm->GetBufferR()[8] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1432,7 +1432,7 @@ namespace rd1 {
 					 pm->GetBufferR()[9] = 255;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1442,7 +1442,7 @@ namespace rd1 {
 					 pm->GetBufferR()[9] = 0;
 					 bufferMutex->ReleaseMutex();
 					 UpdateView();
-					 //SaveDataToCLP();
+					 SaveDataToCLP();
 					 // Save on database
 					 SaveParametersToDatabase();
 				 }
@@ -1458,7 +1458,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferM()[0] = trackBarM6->Value;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1468,7 +1468,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferM()[1] = trackBarM7->Value;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1478,7 +1478,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferM()[2] = trackBarM8->Value;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1488,7 +1488,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferM()[3] = trackBarM9->Value;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1498,7 +1498,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferM()[4] = trackBarM10->Value;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1514,7 +1514,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferD()[0] = f;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1526,7 +1526,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferD()[1] = f;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1538,7 +1538,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferD()[2] = f;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1550,7 +1550,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferD()[3] = f;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
@@ -1562,7 +1562,7 @@ namespace rd1 {
 				 bufferMutex->WaitOne();
 				 pm->GetBufferD()[4] = f;
 				 bufferMutex->ReleaseMutex();
-				 //SaveDataToCLP();
+				 SaveDataToCLP();
 				 // Save on database
 				 SaveParametersToDatabase();
 	}
